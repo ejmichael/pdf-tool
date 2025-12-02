@@ -1,0 +1,13 @@
+# Node
+node_modules/
+npm-debug.log
+
+# React
+frontend/node_modules/
+frontend/build/
+
+# Express uploads (optional)
+server/uploads/
+
+# Environment files
+.env
