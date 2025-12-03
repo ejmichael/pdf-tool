@@ -3,7 +3,7 @@ const { PDFDocument } = require('pdf-lib');
 // const { v4: uuid } = require('uuid')
 
 const compressPDFFile = async (filePath) => {
-      const { v4: uuid } = await import("uuid");
+    const { v4: uuid } = await import("uuid");
     const pdfBytes = fs.readFileSync(filePath);
 
     const pdfDoc = await PDFDocument.load(pdfBytes, {
