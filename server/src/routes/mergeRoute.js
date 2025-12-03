@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const mergePDFController = require("../controllers/mergePdfController");
+const mergePDFController = require("../controllers/mergePDFController");
 
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
