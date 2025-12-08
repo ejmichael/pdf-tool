@@ -72,7 +72,7 @@ const Home = () => {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link to="/tools" className="text-blue-600 font-semibold hover:underline">
+            <Link to="/all-tools" className="text-blue-600 font-semibold hover:underline">
               See all PDF Tools
             </Link>
           </div>

@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AllTools from "./pages/AllTools";
 import Merge from "./pages/tools/Merge";
+import PdfToJpg from "./pages/tools/PdfToJpg";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/all-tools" element={<AllTools />} />
           <Route path="/tools/merge" element={<Merge />} />
+          <Route path="/tools/pdf-to-jpg" element={<PdfToJpg />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={<About />} />
