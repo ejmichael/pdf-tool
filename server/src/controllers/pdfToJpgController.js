@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const PDFImage = require("pdf-poppler");
+const { fromPath } = require("pdf2pic");
 const archiver = require("archiver");
 
 const pdfToJpgController = async (req, res) => {
@@ -11,18 +11,27 @@ const pdfToJpgController = async (req, res) => {
 
     const pdfPath = req.file.path;
     const outputDir = path.join(__dirname, "../../temp", `jpg_${Date.now()}`);
-
     fs.mkdirSync(outputDir, { recursive: true });
 
     const options = {
+      density: 150,
+      saveFilename: "page",
+      savePath: outputDir,
       format: "jpeg",
-      out_dir: outputDir,
-      out_prefix: "page",
-      page: null,
+      width: 1200, // optional: resize width
+      height: 1600, // optional: resize height
     };
 
-    await PDFImage.convert(pdfPath, options);
+    const storeAsImage = fromPath(pdfPath, options);
+    const pdfData = await storeAsImage(1, true); // get number of pages
+    const totalPages = pdfData.length || 1; // fallback
 
+    // convert all pages
+    for (let i = 1; i <= totalPages; i++) {
+      await storeAsImage(i);
+    }
+
+    // zip the images
     const zipPath = `${outputDir}.zip`;
     const output = fs.createWriteStream(zipPath);
     const archive = archiver("zip", { zlib: { level: 9 } });
