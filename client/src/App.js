@@ -9,9 +9,12 @@ import Contact from "./pages/Contact";
 import AllTools from "./pages/AllTools";
 import Merge from "./pages/tools/Merge";
 import PdfToJpg from "./pages/tools/PdfToJpg";
+import CookiePolicy from "./pages/CookiePolicy";
+import Footer from "./components/Footer";
 
 function App() {
   return (
+  <>
     <Router>
       {/* Navigation */}
       <nav className="w-full bg-white shadow-sm py-4 px-6 flex justify-center gap-6 text-gray-700 fixed top-0 left-0 z-50">
@@ -33,10 +36,14 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={<About />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
+      <Footer/>
     </Router>
+    
+  </>
   );
 }
 
