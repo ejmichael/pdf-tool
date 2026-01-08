@@ -7,6 +7,7 @@ const UploadBox = ({
   apiEndpoint = "/api/compress",
   buttonText = "Compress PDF",
   downloadFileName = "output.pdf",
+  extraFields = {}, // ✅ NEW (optional)
 }) => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,9 +22,18 @@ const UploadBox = ({
     setLoading(true);
 
     const form = new FormData();
+
+    // Files
     Array.from(files).forEach((file) =>
       form.append(multiple ? "files" : "file", file)
     );
+
+    // ✅ Extra fields (pages, ranges, options, etc.)
+    Object.entries(extraFields).forEach(([key, value]) => {
+      if (value !== undefined && value !== "") {
+        form.append(key, value);
+      }
+    });
 
     try {
       const res = await axios.post(domain + apiEndpoint, form, {
@@ -55,15 +65,15 @@ const UploadBox = ({
             d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0-8L8 8m4 4 4-4m-4 4V4"
           />
         </svg>
+
         <span className="text-gray-600 text-center">
           {files.length
-            ? Array.from(files)
-                .map((f) => f.name)
-                .join(", ")
+            ? Array.from(files).map((f) => f.name).join(", ")
             : multiple
             ? "Drag & drop PDFs here or click to select"
             : "Drag & drop a PDF here or click to select"}
         </span>
+
         <input
           type="file"
           accept="application/pdf"

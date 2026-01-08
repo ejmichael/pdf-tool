@@ -11,6 +11,8 @@ import Merge from "./pages/tools/Merge";
 import PdfToJpg from "./pages/tools/PdfToJpg";
 import CookiePolicy from "./pages/CookiePolicy";
 import Footer from "./components/Footer";
+import SplitPdf from "./pages/tools/SplitPdf";
+import DeletePages from "./pages/tools/DeletePages";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path="/all-tools" element={<AllTools />} />
           <Route path="/tools/merge" element={<Merge />} />
           <Route path="/tools/pdf-to-jpg" element={<PdfToJpg />} />
+          <Route path="/tools/pdf-split" element={<SplitPdf />} />
+          <Route path="/tools/delete-pages-from-pdf" element={<DeletePages />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={<About />} />

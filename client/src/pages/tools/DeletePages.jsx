@@ -1,0 +1,75 @@
+import React, { useState } from "react";
+import UploadBox from "../../components/UploadBox";
+import ResultBox from "../../components/ResultBox";
+
+const DeletePages = () => {
+  const [downloadUrl, setDownloadUrl] = useState(null);
+  const [pages, setPages] = useState("");
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center p-4">
+      {/* Hero Header */}
+      <header className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16 px-4 text-center">
+        <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
+          Delete PDF Pages
+        </h1>
+        <p className="text-lg md:text-xl max-w-2xl mx-auto">
+          Remove unwanted pages from your PDF file easily and securely.
+        </p>
+      </header>
+
+      {/* Main Tool Section */}
+      <main className="w-full flex flex-col items-center p-4 -mt-16 z-10">
+        <div className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-lg">
+
+          {/* Ad Placeholder Top */}
+          <div className="mb-6 flex justify-center">
+            <div className="w-full h-24 bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+              Top Ad Placeholder
+            </div>
+          </div>
+
+          {/* Page Input */}
+          <input
+            type="text"
+            placeholder="Pages to delete (e.g. 1,3,5)"
+            value={pages}
+            onChange={(e) => setPages(e.target.value)}
+            className="w-full mb-4 px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <UploadBox
+            setDownloadUrl={setDownloadUrl}
+            multiple={false}
+            apiEndpoint="/api/delete-pages"
+            buttonText="Delete Pages"
+            extraFields={{ pages }}
+            downloadFileName="updated.pdf"
+          />
+
+          {downloadUrl && (
+            <ResultBox
+              downloadUrl={downloadUrl}
+              setDownloadUrl={setDownloadUrl}
+              toolName="Updated PDF"
+            />
+          )}
+
+          {/* Ad Placeholder Bottom */}
+          <div className="mt-6 flex justify-center">
+            <div className="w-full h-24 bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+              Bottom Ad Placeholder
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="mt-16 mb-8 text-gray-500 text-sm text-center">
+        © {new Date().getFullYear()} Delete PDF Pages Tool. All rights reserved.
+      </footer>
+    </div>
+  );
+};
+
+export default DeletePages;
