@@ -5,6 +5,7 @@ const tools = [
   { title: "Compress PDF", description: "Reduce PDF file size quickly and easily.", route: "/tools/compress" },
   { title: "Merge PDFs", description: "Combine multiple PDFs into one file.", route: "/tools/merge" },
   { title: "Split PDFs", description: "Split your PDF into separate pages.", route: "/tools/split-pdf" },
+  { title: "Protect PDFs", description: "Add passwords to your PDF files.", route: "/tools/protect" },
   { title: "Delete Pages", description: "Delete pages from your PDF file.", route: "/tools/delete-pages-from-pdf" },
   { title: "PDF → Word", description: "Convert PDF files into editable Word documents.", route: "/tools/pdf-to-word" },
   { title: "Word → PDF", description: "Convert Word documents to PDF quickly.", route: "/tools/word-to-pdf" },
