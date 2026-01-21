@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import SplitPdf from "./pages/tools/SplitPdf";
 import DeletePages from "./pages/tools/DeletePages";
 import Protect from "./pages/tools/Protect";
+import PdfToolsDropdown from "./components/PdfToolsDropdown";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
       {/* Navigation */}
       <nav className="w-full bg-white shadow-sm py-4 px-6 flex justify-center gap-6 text-gray-700 fixed top-0 left-0 z-50">
         <Link to="/">Home</Link>
-        <Link to="/all-tools">PDF Tools</Link>
+        <div className="relative group">
+  <PdfToolsDropdown />
+    </div>
         <Link to="/privacy">Privacy</Link>
         <Link to="/terms">Terms</Link>
         <Link to="/about">About</Link>
